@@ -1,0 +1,11 @@
+# Agent pipeline artefacts — commit specific story folders to keep as decision records
+.agent-runs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp

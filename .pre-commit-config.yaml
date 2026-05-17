@@ -1,0 +1,128 @@
+# Run once after install.sh:  pre-commit install --hook-type pre-commit --hook-type commit-msg
+# Fix most file-hygiene violations automatically: pre-commit run --all-files
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '\.md$'
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.1
+    hooks:
+      - id: gitleaks
+
+  # ── Build-tool hooks ──────────────────────────────────────────────────────
+  # Uncomment and adapt the block that matches your build tool.
+  # These run on every commit that touches source files, so keep them fast.
+  #
+  # --- Gradle (Java / Kotlin) ---
+  # - repo: local
+  #   hooks:
+  #     - id: gradle-spotless
+  #       name: Gradle Spotless check
+  #       entry: ./gradlew spotlessCheck -q
+  #       language: system
+  #       pass_filenames: false
+  #       files: '\.java$|\.kt$|\.gradle$'
+  #     - id: gradle-compile
+  #       name: Gradle compile
+  #       entry: ./gradlew compileJava -q
+  #       language: system
+  #       pass_filenames: false
+  #       files: '\.java$|\.kt$'
+  #
+  # --- Maven ---
+  # - repo: local
+  #   hooks:
+  #     - id: maven-compile
+  #       name: Maven compile
+  #       entry: ./mvnw compile -q
+  #       language: system
+  #       pass_filenames: false
+  #       files: '\.java$'
+  #
+  # --- npm / Node ---
+  # - repo: local
+  #   hooks:
+  #     - id: npm-lint
+  #       name: ESLint
+  #       entry: npm run lint --silent
+  #       language: system
+  #       pass_filenames: false
+  #       files: '\.[jt]sx?$'
+  #
+  # --- Python ---
+  # - repo: local
+  #   hooks:
+  #     - id: ruff-check
+  #       name: Ruff lint
+  #       entry: ruff check
+  #       language: system
+  #       files: '\.py$'
+
+  - repo: local
+    hooks:
+      - id: lint-story-headings
+        name: User story has required sections
+        entry: scripts/lint-headings.sh
+        language: script
+        files: '^\.stories/.*\.md$'
+        exclude: '^\.stories/TEMPLATE\.md$'
+
+      - id: check-test-conventions
+        name: Project test conventions
+        entry: scripts/check-test-conventions.sh
+        language: script
+        # CUSTOMIZE: update the file pattern to match your source files.
+        files: '^src/.*\.(java|kt|ts|tsx|js|jsx|py|go|rb|cs|rs)$'
+
+      - id: check-commit-scope
+        name: feat/fix commits don't touch orchestrator or docs
+        entry: scripts/check-commit-scope.sh
+        language: script
+        stages: [commit-msg]
+
+      - id: check-branch-not-main
+        name: Block direct commits to main/master
+        entry: scripts/check-branch-not-main.sh
+        language: script
+        pass_filenames: false
+        always_run: true
+
+      - id: stamp-agent-artefact-metadata
+        name: Auto-stamp .agent-runs artefact timestamps
+        entry: scripts/stamp-agent-artefact-metadata.sh
+        language: script
+        files: '^\.agent-runs/.*\.md$'
+
+      - id: check-agent-artefact-commits
+        name: Agent dev/tester artefacts have a verifiable commits field
+        entry: scripts/check-agent-artefact-commits.sh
+        language: script
+        files: '^\.agent-runs/.*-(implementation|tests)\.md$'
+
+      - id: check-reviewer-advancement
+        name: Reviewer re-review must advance the reviewed SHA when prior had blockers
+        entry: scripts/check-reviewer-advancement.sh
+        language: script
+        files: '^\.agent-runs/.*-review\.md$'
+
+      - id: check-plan-deviation
+        name: Developer artefact must justify files outside the plan's FILES TO TOUCH
+        entry: scripts/check-plan-deviation.sh
+        language: script
+        files: '^\.agent-runs/.*-implementation\.md$'
+
+      - id: check-tester-deviation
+        name: Tester artefact must justify non-test files outside the plan's FILES TO TOUCH
+        entry: scripts/check-tester-deviation.sh
+        language: script
+        files: '^\.agent-runs/.*-tests\.md$'
