@@ -23,7 +23,7 @@ A reusable agentic development harness for software teams using GitHub Copilot (
 
 ```bash
 cd your-existing-repo
-curl -sSL https://raw.githubusercontent.com/<org>/harness-dev-framework/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/hyalen-caldeira/harness-dev-framework/main/install.sh | bash
 ```
 
 Then follow `CUSTOMIZE.md`.
@@ -36,7 +36,7 @@ Click **"Use this template"** on GitHub to create a new repo pre-populated with 
 
 ```bash
 cd your-repo
-curl -sSL https://raw.githubusercontent.com/<org>/harness-dev-framework/main/update.sh | bash
+curl -sSL https://raw.githubusercontent.com/hyalen-caldeira/harness-dev-framework/main/update.sh | bash
 ```
 
 This overwrites all framework files (agents, skills, scripts, config) but never touches `.github/copilot-instructions.md` — the team-owned conventions file is yours.

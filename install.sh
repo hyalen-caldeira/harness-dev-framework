@@ -2,7 +2,7 @@
 # install.sh — add harness-dev-framework to an existing repository
 #
 # Usage (from the root of the target repo):
-#   curl -sSL https://raw.githubusercontent.com/<org>/harness-dev-framework/main/install.sh | bash
+#   curl -sSL https://raw.githubusercontent.com/hyalen-caldeira/harness-dev-framework/main/install.sh | bash
 #   # or, if you have the framework cloned locally:
 #   bash /path/to/harness-dev-framework/install.sh
 #
@@ -18,7 +18,7 @@
 
 set -euo pipefail
 
-FRAMEWORK_REPO="https://github.com/<org>/harness-dev-framework"
+FRAMEWORK_REPO="https://github.com/hyalen-caldeira/harness-dev-framework"
 FORCE=0
 DRY_RUN=0
 

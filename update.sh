@@ -4,7 +4,7 @@
 # Usage (from the root of the target repo):
 #   bash /path/to/harness-dev-framework/update.sh
 #   # or via curl:
-#   curl -sSL https://raw.githubusercontent.com/<org>/harness-dev-framework/main/update.sh | bash
+#   curl -sSL https://raw.githubusercontent.com/hyalen-caldeira/harness-dev-framework/main/update.sh | bash
 #
 # Equivalent to: install.sh --force
 # Does NOT overwrite .github/copilot-instructions.md (team-owned file).
