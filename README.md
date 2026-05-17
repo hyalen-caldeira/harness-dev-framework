@@ -14,6 +14,7 @@ A reusable agentic development harness for software teams using GitHub Copilot (
 | `.pre-commit-config.yaml` | Pre-commit config wiring all hooks (build-tool hooks commented out — choose yours) |
 | `CUSTOMIZE.md` | Adoption checklist |
 | `install.sh` / `update.sh` | Adoption scripts for new and existing repositories |
+| `examples/` | Filled-in reference files (Spring Boot `copilot-instructions`, test-convention script) |
 
 ## The one file teams write
 

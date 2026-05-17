@@ -10,6 +10,8 @@ Complete these steps after running `install.sh` (or after cloning this repo as a
 
 This is the **single customization point** the agents read. Every section marked with `<!-- ... -->` comments must be filled in:
 
+A fully filled-in Spring Boot / Java example is in [`examples/copilot-instructions-spring-boot.md`](examples/copilot-instructions-spring-boot.md) — use it as a reference for depth and specificity.
+
 - `## Project` — one paragraph describing the service and its domain concepts
 - `## Stack` — language, framework, persistence, HTTP client, test framework, build tool
 - `## Build command` — the exact command `run-build` will execute
