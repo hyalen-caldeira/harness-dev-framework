@@ -11,6 +11,7 @@ A reusable agentic development harness for software teams using GitHub Copilot (
 | `scripts/` | Nine pre-commit hook scripts (branch guard, commit-scope, artefact validators, timestamp stamper) |
 | `.stories/TEMPLATE.md` | Nine-section user story template the pipeline depends on |
 | `AGENTS.md` | Orchestration protocol: routing, rework loop, two-iteration cap, artefact format |
+| `CLAUDE.md` | Guidance for Claude Code (claude.ai/code) when working in this repository |
 | `.pre-commit-config.yaml` | Pre-commit config wiring all hooks (build-tool hooks commented out — choose yours) |
 | `CUSTOMIZE.md` | Adoption checklist |
 | `install.sh` / `update.sh` | Adoption scripts for new and existing repositories |
